@@ -1,6 +1,7 @@
 # CÓDIGO REFACTORIZADO SOLID
 
 from abc import ABC, abstractmethod
+from validador_evento import ValidadorEvento
 
 # 1. Responsabilidad: Almacenar y gestionar datos de eventos
 class RepositorioEventos:
@@ -15,6 +16,11 @@ class RepositorioEventos:
             if evento["nombre"] == nombre:
                 return evento
         return None
+    validador = ValidadorEvento()
+
+if not validador.validar_nombre(evento.get("nombre", "")):
+    raise Exception("Nombre inválido")
+
 
 # 2. Abstracción para notificaciones (OCP y DIP)
 class ServicioNotificacion(ABC):
