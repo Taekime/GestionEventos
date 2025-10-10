@@ -8,4 +8,7 @@ Este proyecto permite gestionar eventos, inscripciones y reportes para una unive
 
 - Ignacio Correa implementó la validación de datos.
 
--Diegoblim soy la cabra
+- Diego Araya implementó el Logger
+- Felipe Navarrete mejoró las notificaciones SMS
+- Tomás Perez mejoró los reportes del sistema
+- Gabriel Gonzalez agregó exepciones
