@@ -1,0 +1,31 @@
+name: CI de Python
+
+on: [push] # Se ejecuta en cada 'git push'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run Unit Tests (Unittest)
+      run: python -m unittest -v
+
+    - name: Run BDD Tests (Behave)
+      run: behave --format=plain
+
+    - name: Run Security Scan (Bandit)
+      run: bandit -r .
+
+    # (Opcional) Ejecutar coverage si está configurado
+    - name: Run Coverage
+      run: |
+        coverage run -m unittest
+        coverage report -m
