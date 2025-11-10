@@ -1,4 +1,4 @@
-from exepciones import EventoNoEncontradoError, CuposAgotadosError, DatosInvalidosError
+from excepciones import EventoNoEncontradoError, CuposAgotadosError, DatosInvalidosError
 from validador_evento import ValidadorEvento
 from logger import Logger
 from servicios.notificador_sms import NotificadorSMS
