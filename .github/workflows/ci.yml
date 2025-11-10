@@ -16,16 +16,18 @@ jobs:
       run: pip install -r requirements.txt
 
     - name: Run Unit Tests (Unittest)
+      # Este paso pasó, lo mantenemos como está
       run: python -m unittest -v
 
     - name: Run BDD Tests (Behave)
       run: behave --format=plain
 
     - name: Run Security Scan (Bandit)
-      # AJUSTE CORREGIDO: Se usa --exit-zero para evitar el fallo por advertencias Low/Medium.
+      # Ajuste de Bandit para no fallar por advertencias
       run: bandit -r . -s B101 -s B603 --exit-zero
 
     - name: Run Coverage
       run: |
-        coverage run -m unittest
+        # ÚLTIMA CORRECCIÓN: Ejecución de discover sin el flag -s
+        coverage run --source=. -m unittest discover tests -v
         coverage report -m
